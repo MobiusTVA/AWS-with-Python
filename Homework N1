@@ -1,0 +1,20 @@
+# მოაწყვეთ სამუშაო გარემო. დაწერეთ პითონის პროგრამა რომელიც გაჩვენებთ თქვენი სისტემიდან ყველა s3 საცავს.
+# დაწერეთ პროგრამა რომელიც დაბეჭდავს თქვენი სისტემიდან ყველა s3 საცავს რომლის სახელიც იწყება prod-ით.
+
+
+
+import boto3
+session = boto3.resource('s3')
+def allBuckets():
+    for bucket in session.buckets.all():
+      print("Bucket list: ", bucket.name + "\n" )
+def getBuckets():
+    for bucket in session.buckets.all():
+        if bucket.name.startswith('prod'):
+            print("Prod buckets: ", bucket.name)
+allBuckets()
+getBuckets()
+
+def main():  
+    if __name__ == "__main__":
+        main()
